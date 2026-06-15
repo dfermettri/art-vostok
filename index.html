@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART VOSTOK</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+    <main class="page">
+        <section class="hero" id="home">
+            <header class="header">
+                <a class="logo header__logo" href="#home" aria-label="ARTVOSTOK home">
+                    <img src="img/logo/art-vostok-logo.svg" alt="ARTVOSTOK">
+                </a>
+
+                <nav class="nav" aria-label="Main navigation">
+                    <a href="#home">Home</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#about">About us</a>
+                    <a href="#contacts">Contacts</a>
+                    <a href="#jobs">Jobs</a>
+                    <a href="#blog">Blog</a>
+                </nav>
+
+                <div class="header__socials" aria-label="Social links">
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="img/logo/in-transparent-logo.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <img src="img/logo/inst-transparent-logo.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="ArtStation">
+                        <img src="img/logo/artstation-transparent-logo.svg" alt="">
+                    </a>
+                    <a class="header__lang" href="#" aria-label="English">
+                        <span>En</span>
+                    </a>
+                </div>
+            </header>
+
+            <div class="hero__slide hero__slide--atomic is-active" aria-hidden="false"></div>
+
+            <div class="hero__slide hero__slide--warcraft" aria-hidden="true"></div>
+
+            <div class="hero__controls" aria-label="Slider controls">
+                <button type="button" aria-label="Previous slide" data-hero-prev>‹</button>
+                <button type="button" aria-label="Next slide" data-hero-next>›</button>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <span class="section-outline">ARTVOSTOK</span>
+            <h2>ARTVOSTOK</h2>
+
+            <div class="about__content">
+                <p class="about__lead">
+                    We create a wide range of digital stylized and realistic art content from 2D sketches
+                    to highly detailed, fully rigged, and animated 3D assets for all types of projects.
+                </p>
+
+                <div class="about__text">
+                    <p>
+                        Artvostok is a game art studio, established in 2006. We strive for innovation,
+                        always working to push the boundaries of our art to provide the best quality
+                        through creative Collaboration with our partners. Our strong management team
+                        ensures high quality and well-coordinated work. Our main goal is to have a strong
+                        and long-lasting relationship with our partners. Our company is continuously adapting
+                        and improving the team's knowledge is an important factor for us. So our employees attend
+                        a variety of events, help to teach students, organize meetups, and host lectures.
+                    </p>
+                    <a class="button button--dark" href="#contacts">
+                        More about us
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="clients" aria-label="Our clients">
+            <span class="section-outline">OUR CLIENTS</span>
+            <div class="clients__list">
+                <span>Saber<br>Interactive</span>
+                <span>Volcano<br>Force</span>
+                <span>Supercell</span>
+                <span>Activision</span>
+                <span>Nival</span>
+                <span>Gaijin</span>
+                <span>Mundfish</span>
+                <span>RJ Games</span>
+                <span>Seven Pirates</span>
+            </div>
+        </section>
+
+        <section class="work" id="portfolio">
+            <div class="section-heading">
+                <h2>Our work</h2>
+                <a class="button button--dark" href="#projects">
+                    See all projects
+                    <span></span>
+                </a>
+            </div>
+
+            <div class="work__grid" id="projects">
+                <article class="work-card work-card--warrior">
+                    <span>Realistic character</span>
+                </article>
+                <article class="work-card work-card--bike">
+                    <span>Stylized vehicle</span>
+                </article>
+                <article class="work-card work-card--chair">
+                    <span>Real life object</span>
+                </article>
+                <article class="work-card work-card--elephant">
+                    <span>Creature sculpt</span>
+                </article>
+                <article class="work-card work-card--creature">
+                    <span>Monster concept</span>
+                </article>
+                <article class="work-card work-card--saw">
+                    <span>Prop production</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact" id="contacts">
+            <span class="section-outline">CONTACT US</span>
+            <h2>Contact us</h2>
+            <p>
+                Need a hand with your latest project or want the cheat codes to a winning partnership?
+                If there’s anything you’re unsure of, we’re always here to help.
+            </p>
+
+            <form class="contact__form" action="#" method="post">
+                <div class="contact__row">
+                    <label>
+                        <span>First name</span>
+                        <input type="text" name="name" placeholder="First name">
+                    </label>
+                    <label>
+                        <span>E-mail</span>
+                        <input type="email" name="email" placeholder="E-mail">
+                    </label>
+                </div>
+
+                <label>
+                    <span>Message</span>
+                    <textarea name="message" placeholder="Message"></textarea>
+                </label>
+
+                <label class="contact__policy">
+                    <input type="checkbox" name="policy">
+                    <span>I agree with the Privacy and Data Processing Policy.</span>
+                </label>
+
+                <button class="button button--red" type="submit">
+                    Send message
+                    <span></span>
+                </button>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <div class="footer__contacts">
+                <small>E-mail</small>
+                <a href="mailto:contacts@artvostok.com">contacts@artvostok.com</a>
+                <small>Social media</small>
+                <div class="footer__socials">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="ArtStation">△</a>
+                </div>
+            </div>
+
+            <a class="logo logo--footer" href="#home" aria-label="ARTVOSTOK home">
+                <span class="logo__mark"></span>
+                <span class="logo__text">ARTVOSTOK<br><small>studio</small></span>
+            </a>
+
+            <div class="footer__bottom">
+                <a href="#">Privacy</a>
+                <a href="#">Legal</a>
+                <a href="#">Modern Slavery and Human Trafficking Statement</a>
+                <span>© 2010 - 2026 ARTVOSTOK. Limited and related entities. All rights reserved.</span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>

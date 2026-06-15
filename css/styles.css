@@ -1,0 +1,1092 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    src:
+        local("Bw Modelica Cyrillic DEMO Regular"),
+        local("Bw Modelica Cyrillic DEMO"),
+        local("BwModelicaCyrillicDEMO"),
+        url("../fonts/BwModelicaCyrillicDEMO-Regular.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Regular.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Regular.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    src:
+        local("Bw Modelica Cyrillic DEMO Light"),
+        local("BwModelicaCyrillicDEMO-Light"),
+        url("../fonts/BwModelicaCyrillicDEMO-Light.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Light.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Light.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    src:
+        local("Bw Modelica Cyrillic DEMO Medium"),
+        local("Bw Modelica Cyrillic DEMO"),
+        local("BwModelicaCyrillicDEMO-Medium"),
+        url("../fonts/BwModelicaCyrillicDEMO-Medium.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Medium.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Medium.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    src:
+        local("Bw Modelica Cyrillic DEMO Medium"),
+        local("Bw Modelica Cyrillic DEMO"),
+        local("BwModelicaCyrillicDEMO-Medium"),
+        url("../fonts/BwModelicaCyrillicDEMO-Medium.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Medium.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Medium.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    src:
+        local("Bw Modelica Cyrillic DEMO Black"),
+        local("BwModelicaCyrillicDEMO-Black"),
+        url("../fonts/BwModelicaCyrillicDEMO-Black.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Black.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Black.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    src:
+        local("Bw Modelica Cyrillic DEMO Black"),
+        local("BwModelicaCyrillicDEMO-Black"),
+        url("../fonts/BwModelicaCyrillicDEMO-Black.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Black.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Black.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Code Pro LC";
+    src:
+        local("Code Pro Normal LC"),
+        local("Code Pro LC"),
+        local("CodeProLC"),
+        url("../fonts/CodeProLC-Regular.woff2") format("woff2"),
+        url("../fonts/CodeProLC-Regular.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+:root {
+    --page-width: 100%;
+    --section-padding: clamp(16px, 4vw, 96px);
+    --bg: #02090f;
+    --bg-soft: #06131d;
+    --white: #ffffff;
+    --muted: #9aa6b0;
+    --line: rgba(255, 255, 255, 0.28);
+    --red: #ff4742;
+    --font-main: "Bw Modelica Cyrillic DEMO";
+    --font-accent: "Code Pro LC";
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    margin: 0;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 16% 16%, rgba(10, 33, 43, 0.45), transparent 24%),
+        #000;
+    color: var(--white);
+    font-family: var(--font-main);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 36px;
+    left: max(-230px, calc(50% - 905px));
+    z-index: -1;
+    width: 610px;
+    height: 520px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, transparent 49%, rgba(103, 123, 137, 0.4) 50%, transparent 51%),
+        radial-gradient(circle, rgba(0, 24, 31, 0.95), transparent 66%);
+    background-size: 6px 6px, 100% 100%;
+    filter: blur(0.2px);
+    opacity: 0.65;
+    transform: rotate(10deg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+.page {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(14px, 1vw, 24px);
+    min-width: clamp(134px, 8.5vw, 184px);
+    height: clamp(32px, 2.35vw, 46px);
+    padding: 0 clamp(7px, 0.55vw, 11px) 0 clamp(20px, 1.55vw, 30px);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    color: var(--white);
+    font-family: "Bw Modelica Cyrillic DEMO";
+    font-size: 22.76px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.button span {
+    position: relative;
+    width: clamp(22px, 1.65vw, 32px);
+    height: clamp(22px, 1.65vw, 32px);
+    flex: 0 0 clamp(22px, 1.65vw, 32px);
+    border-radius: 50%;
+    background:
+        var(--white)
+        url("../img/arrow.svg")
+        center / clamp(9px, 0.72vw, 14px) auto
+        no-repeat;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button--red {
+    border-color: var(--red);
+    background: var(--red);
+}
+
+.button--dark {
+    border-color: rgba(255, 255, 255, 0.65);
+    background: rgba(4, 10, 15, 0.38);
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 2.4vw, 48px);
+    min-height: clamp(52px, 4.6vw, 88px);
+    padding: clamp(10px, 0.9vw, 18px) var(--section-padding);
+    font-family: "Bw Modelica Cyrillic DEMO";
+    font-size: 22.76px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.logo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(5px, 0.45vw, 9px);
+    width: clamp(62px, 5.6vw, 110px);
+    flex: 0 0 auto;
+    font-family: inherit;
+    letter-spacing: 0.36em;
+}
+
+.header__logo {
+    width: clamp(90px, 7vw, 135px);
+    flex-direction: row;
+    gap: 0;
+    letter-spacing: 0;
+}
+
+.header__logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.logo__mark {
+    position: relative;
+    width: clamp(22px, 2vw, 40px);
+    height: clamp(22px, 2vw, 40px);
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.logo__mark::before {
+    content: "";
+    position: absolute;
+    top: 27%;
+    left: 27%;
+    width: 41%;
+    height: 55%;
+    border-radius: 10px 10px 2px 2px;
+    background: var(--bg);
+    transform: rotate(-28deg);
+}
+
+.logo__text {
+    font-size: clamp(7px, 0.58vw, 11px);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 1.45vw, 34px);
+    flex: 1 1 auto;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+}
+
+.nav a,
+.header__socials a {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.nav a:hover,
+.header__socials a:hover {
+    opacity: 1;
+}
+
+.header__socials {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1vw, 22px);
+    flex: 0 0 auto;
+    font: inherit;
+    letter-spacing: inherit;
+}
+
+.header__socials a {
+    display: grid;
+    place-items: center;
+    min-width: clamp(13px, 1vw, 20px);
+    height: clamp(13px, 1vw, 20px);
+    font: inherit;
+    letter-spacing: inherit;
+}
+
+.header__socials img {
+    display: block;
+    width: clamp(18px, 1.45vw, 28px);
+    height: clamp(18px, 1.45vw, 28px);
+    object-fit: contain;
+}
+
+.header__socials .header__lang {
+    position: relative;
+    width: clamp(24px, 1.95vw, 38px);
+    height: clamp(24px, 1.95vw, 38px);
+    min-width: clamp(24px, 1.95vw, 38px);
+    padding-bottom: clamp(4px, 0.35vw, 7px);
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: clamp(10px, 0.75vw, 15px);
+    font-weight: 500;
+    line-height: 1;
+    text-transform: none;
+}
+
+.header__lang::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: clamp(5px, 0.35vw, 7px);
+    width: clamp(5px, 0.42vw, 8px);
+    height: clamp(5px, 0.42vw, 8px);
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1350 / 650;
+    overflow: hidden;
+}
+
+.hero__slide {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.hero__slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.hero__slide--atomic {
+    background: url("../img/hero-atomic.png") center / cover no-repeat;
+}
+
+.hero__slide--warcraft {
+    background: url("../img/hero-warcraft.png") center / cover no-repeat;
+}
+
+.hero__controls {
+    position: absolute;
+    right: var(--section-padding);
+    bottom: 24px;
+    z-index: 3;
+    display: flex;
+    gap: 7px;
+}
+
+.hero__controls button {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--white);
+    color: #16212a;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.about,
+.clients,
+.work,
+.contact {
+    position: relative;
+    width: 100%;
+    padding-inline: var(--section-padding);
+}
+
+.section-outline {
+    position: absolute;
+    z-index: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    text-stroke: 1px rgba(255, 255, 255, 0.1);
+    font-family: "Code Pro LC";
+    font-size: 298.67px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.about {
+    padding-top: clamp(78px, 6.5vw, 128px);
+    padding-bottom: clamp(55px, 5vw, 96px);
+}
+
+.about .section-outline {
+    top: 61px;
+    left: -23px;
+}
+
+.about h2 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 clamp(30px, 2.6vw, 52px);
+    padding-left: 0;
+    font-family: "Code Pro LC";
+    font-size: 298.67px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.about__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(27px, 3.2vw, 64px);
+}
+
+.about__lead {
+    margin: 0;
+    font-family: "Bw Modelica Cyrillic DEMO";
+    font-size: 51.2px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.about__text {
+    color: var(--muted);
+    font-family: "Bw Modelica Cyrillic DEMO";
+    font-size: 34.13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: justify;
+}
+
+.about__text p {
+    margin: 0 0 8px;
+}
+
+.about__text .button {
+    margin-top: 9px;
+}
+
+.clients {
+    padding-top: clamp(34px, 3.4vw, 68px);
+    padding-bottom: clamp(72px, 6vw, 118px);
+}
+
+.clients .section-outline {
+    top: -4px;
+    left: 25px;
+}
+
+.clients__list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    align-items: end;
+    gap: clamp(18px, 1.6vw, 34px);
+}
+
+.clients__list span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    color: #f4f8fb;
+    font-family: var(--font-accent);
+    font-size: clamp(16px, 1.15vw, 24px);
+    font-weight: 950;
+    line-height: 0.86;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.clients__list span:first-child {
+    font-family: var(--font-accent);
+    font-size: 14px;
+    font-style: italic;
+}
+
+.clients__list span:nth-child(2) {
+    width: 46px;
+    height: 46px;
+    justify-self: center;
+    border: 4px solid var(--white);
+    border-radius: 50%;
+    font-size: 7px;
+}
+
+.clients__list span:nth-child(3) {
+    font-size: 16px;
+    line-height: 0.8;
+}
+
+.clients__list span:nth-child(5) {
+    font-size: 20px;
+    letter-spacing: 0.08em;
+}
+
+.clients__list span:nth-child(7) {
+    font-size: 15px;
+    letter-spacing: 0.05em;
+}
+
+.clients__list span:nth-child(8) {
+    border: 2px solid currentColor;
+    font-size: 11px;
+    transform: skew(-8deg);
+}
+
+.clients__list span:nth-child(9) {
+    font-size: 7px;
+}
+
+.work {
+    padding-bottom: clamp(82px, 6vw, 124px);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.section-heading h2,
+.contact h2 {
+    margin: 0;
+    font-family: "Code Pro LC";
+    font-size: 139.38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+}
+
+.section-heading .button {
+    min-width: 140px;
+}
+
+.work__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: clamp(153px, 13vw, 280px);
+    gap: clamp(8px, 0.75vw, 14px);
+}
+
+.work-card {
+    position: relative;
+    min-height: clamp(153px, 13vw, 280px);
+    overflow: hidden;
+    border-radius: 9px;
+    background: #131b22;
+    isolation: isolate;
+}
+
+.work-card::before,
+.work-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.work-card span {
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
+    z-index: 1;
+    max-width: clamp(120px, 9vw, 180px);
+    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-accent);
+    font-size: clamp(8px, 0.58vw, 12px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.work-card--warrior {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    min-height: 314px;
+    background:
+        radial-gradient(circle at 60% 21%, rgba(217, 217, 209, 0.24), transparent 12%),
+        radial-gradient(circle at 41% 53%, rgba(156, 101, 59, 0.7), transparent 22%),
+        linear-gradient(140deg, #070809, #171a1b 52%, #0e1114);
+}
+
+.work-card--warrior::before {
+    left: 50%;
+    bottom: -26px;
+    width: 176px;
+    height: 292px;
+    border-radius: 82px 82px 20px 20px;
+    background:
+        radial-gradient(circle at 50% 13%, #c7c2b3 0 19px, transparent 20px),
+        radial-gradient(circle at 22% 28%, #665647 0 25px, transparent 26px),
+        radial-gradient(circle at 77% 31%, #665647 0 25px, transparent 26px),
+        linear-gradient(90deg, transparent 0 18%, #3e3329 20% 80%, transparent 82%),
+        linear-gradient(180deg, #73604b, #1d1714);
+    transform: translateX(-50%);
+}
+
+.work-card--warrior::after {
+    left: 60px;
+    bottom: 18px;
+    width: 170px;
+    height: 12px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, transparent, rgba(210, 154, 78, 0.6), transparent);
+    transform: rotate(-48deg);
+}
+
+.work-card--bike {
+    grid-column: 3 / span 2;
+    background:
+        radial-gradient(circle at 74% 53%, rgba(51, 236, 229, 0.65), transparent 18%),
+        radial-gradient(circle at 22% 58%, rgba(56, 234, 220, 0.75), transparent 14%),
+        linear-gradient(145deg, #333b43, #12171f);
+}
+
+.work-card--bike::before {
+    left: 55px;
+    right: 36px;
+    top: 52px;
+    height: 28px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #18d7d4, #242d3d 45%, #d51642 46% 64%, #20cfce);
+    transform: skewX(-24deg);
+}
+
+.work-card--bike::after {
+    left: 46px;
+    bottom: 36px;
+    width: 174px;
+    height: 40px;
+    border-radius: 999px;
+    border: 8px solid rgba(38, 235, 228, 0.85);
+    filter: drop-shadow(100px 0 0 rgba(38, 235, 228, 0.72));
+}
+
+.work-card--chair {
+    background:
+        radial-gradient(circle at 32% 55%, rgba(233, 242, 247, 0.88), transparent 24%),
+        linear-gradient(145deg, #4d5459, #11171d);
+}
+
+.work-card--chair::before {
+    left: 37px;
+    top: 34px;
+    width: 62px;
+    height: 72px;
+    border: 8px solid #d9eef8;
+    border-top-width: 16px;
+    border-radius: 5px;
+    transform: skewY(-9deg);
+}
+
+.work-card--chair::after {
+    left: 30px;
+    bottom: 24px;
+    width: 33px;
+    height: 33px;
+    border: 6px solid #cddde5;
+    border-radius: 50%;
+    filter: drop-shadow(68px 0 0 #cddde5);
+}
+
+.work-card--elephant {
+    background:
+        radial-gradient(circle at 58% 50%, rgba(200, 202, 192, 0.58), transparent 32%),
+        linear-gradient(145deg, #32383e, #10151a);
+}
+
+.work-card--elephant::before {
+    right: 24px;
+    bottom: 39px;
+    width: 105px;
+    height: 62px;
+    border-radius: 58% 45% 36% 45%;
+    background: linear-gradient(180deg, #9a9588, #56564f);
+}
+
+.work-card--elephant::after {
+    right: 88px;
+    bottom: 18px;
+    width: 15px;
+    height: 70px;
+    border-radius: 16px;
+    background: #77756d;
+    box-shadow: 32px 16px 0 -3px #686860, 79px 16px 0 -3px #62625c;
+    transform: rotate(15deg);
+}
+
+.work-card--creature {
+    background:
+        radial-gradient(circle at 47% 44%, rgba(254, 143, 33, 0.62), transparent 23%),
+        radial-gradient(circle at 67% 52%, rgba(25, 216, 211, 0.8), transparent 16%),
+        linear-gradient(135deg, #e8ecef, #cfd4d6);
+}
+
+.work-card--creature::before {
+    left: 34px;
+    bottom: 22px;
+    width: 120px;
+    height: 93px;
+    border-radius: 58% 44% 48% 38%;
+    background:
+        radial-gradient(circle at 73% 38%, #29e3df 0 8px, transparent 9px),
+        linear-gradient(135deg, #6c322a, #b85f2c 48%, #352c48);
+    transform: rotate(-16deg);
+}
+
+.work-card--creature::after {
+    left: 114px;
+    bottom: 68px;
+    width: 56px;
+    height: 12px;
+    border-radius: 12px;
+    background: #9d673d;
+    transform: rotate(-32deg);
+}
+
+.work-card--saw {
+    grid-column: 2 / span 3;
+    background:
+        radial-gradient(circle at 78% 44%, rgba(245, 245, 242, 0.36), transparent 29%),
+        linear-gradient(145deg, #d4d5d7, #8f9296);
+}
+
+.work-card--saw::before {
+    right: 18px;
+    bottom: 38px;
+    width: 248px;
+    height: 42px;
+    border-radius: 999px;
+    background:
+        linear-gradient(90deg, transparent 0 8%, #20252a 9% 54%, #e9ecee 55% 78%, #22272d 79%),
+        repeating-linear-gradient(90deg, #1b1f24 0 6px, #596169 6px 9px);
+    transform: rotate(17deg);
+}
+
+.work-card--saw::after {
+    left: 20px;
+    top: 27px;
+    color: rgba(255, 255, 255, 0.92);
+    content: "LOST";
+    font-size: 31px;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+}
+
+.contact {
+    min-height: clamp(482px, 45vw, 860px);
+    padding-top: clamp(54px, 5.4vw, 108px);
+    padding-bottom: clamp(48px, 4.8vw, 96px);
+    text-align: center;
+    background:
+        linear-gradient(180deg, rgba(2, 9, 15, 0.42), rgba(2, 9, 15, 0.62)),
+        radial-gradient(circle at 82% 13%, rgba(37, 93, 61, 0.72), transparent 24%),
+        radial-gradient(circle at 12% 65%, rgba(159, 104, 39, 0.52), transparent 23%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 74px),
+        linear-gradient(135deg, #242720, #0a1117 60%, #111b20);
+}
+
+.contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(2px);
+}
+
+.contact .section-outline {
+    top: clamp(27px, 2.6vw, 52px);
+    left: var(--section-padding);
+    right: var(--section-padding);
+    font-size: 227.56px;
+    letter-spacing: 0;
+    text-align: center;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.13);
+    text-stroke-color: rgba(255, 255, 255, 0.13);
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+}
+
+.contact h2,
+.contact p,
+.contact__form {
+    position: relative;
+    z-index: 1;
+}
+
+.contact h2 {
+    margin-bottom: clamp(18px, 1.8vw, 34px);
+    font-size: 227.56px;
+    letter-spacing: 0;
+    text-align: center;
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+}
+
+.contact p {
+    max-width: none;
+    margin: 0 0 clamp(19px, 1.7vw, 34px);
+    font-family: "Code Pro LC";
+    font-size: 34.13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+}
+
+.contact__form {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.contact__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 1.2vw, 24px);
+    margin-bottom: clamp(12px, 1.2vw, 24px);
+}
+
+.contact label {
+    display: block;
+}
+
+.contact label > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: clamp(9px, 0.75vw, 16px);
+    outline: 0;
+    background: rgba(255, 255, 255, 0.13);
+    color: var(--white);
+    font-size: clamp(10px, 0.78vw, 16px);
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.contact input[type="text"],
+.contact input[type="email"] {
+    height: clamp(36px, 3.1vw, 60px);
+    padding: 0 clamp(18px, 1.5vw, 30px);
+}
+
+.contact textarea {
+    height: clamp(138px, 13vw, 260px);
+    padding: clamp(14px, 1.3vw, 26px) clamp(18px, 1.5vw, 30px);
+    resize: vertical;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+    color: rgba(255, 255, 255, 0.52);
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.17);
+}
+
+.contact .contact__policy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(6px, 0.55vw, 11px);
+    margin: clamp(11px, 1vw, 20px) auto clamp(10px, 1vw, 20px);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(8px, 0.58vw, 12px);
+}
+
+.contact .contact__policy span {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+}
+
+.contact__policy input {
+    width: clamp(10px, 0.75vw, 15px);
+    height: clamp(10px, 0.75vw, 15px);
+    margin: 0;
+    accent-color: var(--red);
+}
+
+.contact .button {
+    border: 0;
+    cursor: pointer;
+}
+
+.footer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    min-height: 164px;
+    padding: 31px var(--section-padding) 18px;
+    background: #102332;
+}
+
+.footer__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer small {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.footer__contacts small {
+    font-family: "Code Pro LC";
+    font-size: 25.6px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.footer__contacts > a {
+    margin: 1px 0 17px;
+    font-family: "Code Pro LC";
+    font-size: 51.2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 7px;
+}
+
+.footer__socials a {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #102332;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.logo--footer {
+    align-self: start;
+    width: 94px;
+    margin-top: 0;
+}
+
+.logo--footer .logo__mark {
+    width: 33px;
+    height: 33px;
+}
+
+.logo--footer .logo__mark::before {
+    top: 9px;
+    left: 9px;
+    width: 13px;
+    height: 16px;
+}
+
+.logo--footer .logo__text {
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.logo--footer small {
+    font-size: 5px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+}
+
+.footer__bottom {
+    position: absolute;
+    left: var(--section-padding);
+    right: var(--section-padding);
+    bottom: 13px;
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 19.91px;
+    line-height: 1;
+}
+
+.footer__bottom a,
+.footer__bottom span {
+    font-family: "Bw Modelica Cyrillic DEMO";
+    font-size: 19.91px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-offset: 0%;
+    text-decoration-thickness: 0%;
+}
+
+.footer__bottom span {
+    margin-left: auto;
+}
