@@ -598,10 +598,12 @@ textarea {
 }
 
 .work__grid {
+    --work-gap: clamp(8px, 0.75vw, 14px);
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: clamp(153px, 13vw, 280px);
-    gap: clamp(8px, 0.75vw, 14px);
+    grid-auto-rows: clamp(153px, 21vw, 410px);
+    gap: var(--work-gap);
 }
 
 .work-card {
@@ -610,204 +612,49 @@ textarea {
     overflow: hidden;
     border-radius: 9px;
     background: #131b22;
-    isolation: isolate;
 }
 
-.work-card::before,
-.work-card::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.work-card span {
-    position: absolute;
-    left: 12px;
-    bottom: 10px;
-    z-index: 1;
-    max-width: clamp(120px, 9vw, 180px);
-    color: rgba(255, 255, 255, 0.92);
-    font-family: var(--font-accent);
-    font-size: clamp(8px, 0.58vw, 12px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+.work-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
 }
 
 .work-card--warrior {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
-    min-height: 314px;
-    background:
-        radial-gradient(circle at 60% 21%, rgba(217, 217, 209, 0.24), transparent 12%),
-        radial-gradient(circle at 41% 53%, rgba(156, 101, 59, 0.7), transparent 22%),
-        linear-gradient(140deg, #070809, #171a1b 52%, #0e1114);
 }
 
-.work-card--warrior::before {
-    left: 50%;
-    bottom: -26px;
-    width: 176px;
-    height: 292px;
-    border-radius: 82px 82px 20px 20px;
-    background:
-        radial-gradient(circle at 50% 13%, #c7c2b3 0 19px, transparent 20px),
-        radial-gradient(circle at 22% 28%, #665647 0 25px, transparent 26px),
-        radial-gradient(circle at 77% 31%, #665647 0 25px, transparent 26px),
-        linear-gradient(90deg, transparent 0 18%, #3e3329 20% 80%, transparent 82%),
-        linear-gradient(180deg, #73604b, #1d1714);
-    transform: translateX(-50%);
-}
-
-.work-card--warrior::after {
-    left: 60px;
-    bottom: 18px;
-    width: 170px;
-    height: 12px;
-    border-radius: 12px;
-    background: linear-gradient(90deg, transparent, rgba(210, 154, 78, 0.6), transparent);
-    transform: rotate(-48deg);
+.work-card--warrior img {
+    object-position: center top;
 }
 
 .work-card--bike {
     grid-column: 3 / span 2;
-    background:
-        radial-gradient(circle at 74% 53%, rgba(51, 236, 229, 0.65), transparent 18%),
-        radial-gradient(circle at 22% 58%, rgba(56, 234, 220, 0.75), transparent 14%),
-        linear-gradient(145deg, #333b43, #12171f);
 }
 
-.work-card--bike::before {
-    left: 55px;
-    right: 36px;
-    top: 52px;
-    height: 28px;
-    border-radius: 50px;
-    background: linear-gradient(90deg, #18d7d4, #242d3d 45%, #d51642 46% 64%, #20cfce);
-    transform: skewX(-24deg);
+.work-card--elephant img {
+    object-position: center center;
 }
 
-.work-card--bike::after {
-    left: 46px;
-    bottom: 36px;
-    width: 174px;
-    height: 40px;
-    border-radius: 999px;
-    border: 8px solid rgba(38, 235, 228, 0.85);
-    filter: drop-shadow(100px 0 0 rgba(38, 235, 228, 0.72));
+.work-card--chair img {
+    object-position: left center;
 }
 
-.work-card--chair {
-    background:
-        radial-gradient(circle at 32% 55%, rgba(233, 242, 247, 0.88), transparent 24%),
-        linear-gradient(145deg, #4d5459, #11171d);
-}
-
-.work-card--chair::before {
-    left: 37px;
-    top: 34px;
-    width: 62px;
-    height: 72px;
-    border: 8px solid #d9eef8;
-    border-top-width: 16px;
-    border-radius: 5px;
-    transform: skewY(-9deg);
-}
-
-.work-card--chair::after {
-    left: 30px;
-    bottom: 24px;
-    width: 33px;
-    height: 33px;
-    border: 6px solid #cddde5;
-    border-radius: 50%;
-    filter: drop-shadow(68px 0 0 #cddde5);
-}
-
-.work-card--elephant {
-    background:
-        radial-gradient(circle at 58% 50%, rgba(200, 202, 192, 0.58), transparent 32%),
-        linear-gradient(145deg, #32383e, #10151a);
-}
-
-.work-card--elephant::before {
-    right: 24px;
-    bottom: 39px;
-    width: 105px;
-    height: 62px;
-    border-radius: 58% 45% 36% 45%;
-    background: linear-gradient(180deg, #9a9588, #56564f);
-}
-
-.work-card--elephant::after {
-    right: 88px;
-    bottom: 18px;
-    width: 15px;
-    height: 70px;
-    border-radius: 16px;
-    background: #77756d;
-    box-shadow: 32px 16px 0 -3px #686860, 79px 16px 0 -3px #62625c;
-    transform: rotate(15deg);
-}
-
-.work-card--creature {
-    background:
-        radial-gradient(circle at 47% 44%, rgba(254, 143, 33, 0.62), transparent 23%),
-        radial-gradient(circle at 67% 52%, rgba(25, 216, 211, 0.8), transparent 16%),
-        linear-gradient(135deg, #e8ecef, #cfd4d6);
-}
-
-.work-card--creature::before {
-    left: 34px;
-    bottom: 22px;
-    width: 120px;
-    height: 93px;
-    border-radius: 58% 44% 48% 38%;
-    background:
-        radial-gradient(circle at 73% 38%, #29e3df 0 8px, transparent 9px),
-        linear-gradient(135deg, #6c322a, #b85f2c 48%, #352c48);
-    transform: rotate(-16deg);
-}
-
-.work-card--creature::after {
-    left: 114px;
-    bottom: 68px;
-    width: 56px;
-    height: 12px;
-    border-radius: 12px;
-    background: #9d673d;
-    transform: rotate(-32deg);
+.work-card--creature img {
+    object-position: left top;
+    transform: scale(1.1);
+    transform-origin: left top;
 }
 
 .work-card--saw {
     grid-column: 2 / span 3;
-    background:
-        radial-gradient(circle at 78% 44%, rgba(245, 245, 242, 0.36), transparent 29%),
-        linear-gradient(145deg, #d4d5d7, #8f9296);
 }
 
-.work-card--saw::before {
-    right: 18px;
-    bottom: 38px;
-    width: 248px;
-    height: 42px;
-    border-radius: 999px;
-    background:
-        linear-gradient(90deg, transparent 0 8%, #20252a 9% 54%, #e9ecee 55% 78%, #22272d 79%),
-        repeating-linear-gradient(90deg, #1b1f24 0 6px, #596169 6px 9px);
-    transform: rotate(17deg);
-}
-
-.work-card--saw::after {
-    left: 20px;
-    top: 27px;
-    color: rgba(255, 255, 255, 0.92);
-    content: "LOST";
-    font-size: 31px;
-    font-weight: 950;
-    letter-spacing: 0.08em;
+.work-card--saw img {
+    object-position: center 10%;
 }
 
 .contact {
