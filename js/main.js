@@ -137,3 +137,7 @@ if (clientsCarousel) {
     clientsCarousel.addEventListener("focusin", startCarousel);
     clientsCarousel.addEventListener("focusout", stopCarousel);
 }
+
+document.querySelector(".contact__form")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+});

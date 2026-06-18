@@ -99,16 +99,12 @@
 }
 
 :root {
-    --page-width: 100%;
     --section-padding: clamp(16px, 4vw, 96px);
     --bg: #02090f;
-    --bg-soft: #06131d;
     --white: #ffffff;
     --muted: #9aa6b0;
-    --line: rgba(255, 255, 255, 0.28);
     --red: #ff4742;
     --font-main: "Bw Modelica Cyrillic DEMO";
-    --font-accent: "Code Pro LC";
 }
 
 html {
@@ -124,24 +120,6 @@ body {
         #000;
     color: var(--white);
     font-family: var(--font-main);
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 36px;
-    left: max(-230px, calc(50% - 905px));
-    z-index: -1;
-    width: 610px;
-    height: 520px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle, transparent 49%, rgba(103, 123, 137, 0.4) 50%, transparent 51%),
-        radial-gradient(circle, rgba(0, 24, 31, 0.95), transparent 66%);
-    background-size: 6px 6px, 100% 100%;
-    filter: blur(0.2px);
-    opacity: 0.65;
-    transform: rotate(10deg);
 }
 
 a {
@@ -251,32 +229,6 @@ textarea {
     height: auto;
 }
 
-.logo__mark {
-    position: relative;
-    width: clamp(22px, 2vw, 40px);
-    height: clamp(22px, 2vw, 40px);
-    border-radius: 50%;
-    background: var(--white);
-}
-
-.logo__mark::before {
-    content: "";
-    position: absolute;
-    top: 27%;
-    left: 27%;
-    width: 41%;
-    height: 55%;
-    border-radius: 10px 10px 2px 2px;
-    background: var(--bg);
-    transform: rotate(-28deg);
-}
-
-.logo__text {
-    font-size: clamp(7px, 0.58vw, 11px);
-    font-weight: 800;
-    line-height: 1.1;
-}
-
 .nav {
     display: flex;
     align-items: center;
@@ -297,12 +249,15 @@ textarea {
     transition: color 0.2s ease;
 }
 
-.header__socials a {
+.header__socials a,
+.header__social,
+.header__socials button {
     opacity: 0.8;
     transition: opacity 0.2s ease;
 }
 
-.header__socials a:hover {
+.header__socials a:hover,
+.header__socials button:hover {
     opacity: 1;
 }
 
@@ -315,13 +270,24 @@ textarea {
     letter-spacing: inherit;
 }
 
-.header__socials a {
+.header__socials a,
+.header__social,
+.header__socials button {
     display: grid;
     place-items: center;
     min-width: clamp(13px, 1vw, 20px);
     height: clamp(13px, 1vw, 20px);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
     font: inherit;
     letter-spacing: inherit;
+}
+
+.header__socials a,
+.header__socials button {
+    cursor: pointer;
 }
 
 .header__socials img {
@@ -437,7 +403,7 @@ textarea {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
     text-stroke: 1px rgba(255, 255, 255, 0.1);
     font-family: "Code Pro LC";
-    font-size: 298.67px;
+    font-size: clamp(54px, 15.55vw, 298.67px);
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -463,7 +429,7 @@ textarea {
     margin: 0 0 clamp(30px, 2.6vw, 52px);
     padding-left: 0;
     font-family: "Code Pro LC";
-    font-size: 298.67px;
+    font-size: clamp(54px, 15.55vw, 298.67px);
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -482,7 +448,7 @@ textarea {
 .about__lead {
     margin: 0;
     font-family: "Bw Modelica Cyrillic DEMO";
-    font-size: 51.2px;
+    font-size: clamp(22px, 2.67vw, 51.2px);
     font-style: normal;
     font-weight: 700;
     line-height: 1.4;
@@ -493,7 +459,7 @@ textarea {
 .about__text {
     color: var(--muted);
     font-family: "Bw Modelica Cyrillic DEMO";
-    font-size: 34.13px;
+    font-size: clamp(16px, 1.78vw, 34.13px);
     font-style: normal;
     font-weight: 400;
     line-height: 1.4;
@@ -583,7 +549,7 @@ textarea {
 .contact h2 {
     margin: 0;
     font-family: "Code Pro LC";
-    font-size: 139.38px;
+    font-size: clamp(44px, 7.26vw, 139.38px);
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -748,7 +714,8 @@ textarea {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.34);
     border-radius: clamp(9px, 0.75vw, 16px);
-    outline: 0;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     background: rgba(255, 255, 255, 0.13);
     -webkit-backdrop-filter: blur(55.4666633605957px);
     backdrop-filter: blur(55.4666633605957px);
@@ -778,6 +745,7 @@ textarea {
 .contact input:focus,
 .contact textarea:focus {
     border-color: rgba(255, 255, 255, 0.75);
+    outline-color: rgba(255, 255, 255, 0.75);
     background: rgba(255, 255, 255, 0.17);
 }
 
@@ -800,7 +768,7 @@ textarea {
     clip: auto;
 }
 
-.contact__policy a {
+.contact__policy-link {
     color: var(--red);
     text-decoration: underline;
     text-decoration-color: currentColor;
@@ -849,7 +817,7 @@ textarea {
 
 .footer__contacts small {
     font-family: "Code Pro LC";
-    font-size: 25.6px;
+    font-size: clamp(14px, 1.34vw, 25.6px);
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -859,7 +827,7 @@ textarea {
 .footer__contacts > a {
     margin: 1px 0 17px;
     font-family: "Code Pro LC";
-    font-size: 51.2px;
+    font-size: clamp(22px, 2.67vw, 51.2px);
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -872,7 +840,8 @@ textarea {
     margin-top: 7px;
 }
 
-.footer__socials a {
+.footer__socials a,
+.footer__socials span {
     display: grid;
     place-items: center;
     width: 18px;
@@ -897,22 +866,20 @@ textarea {
 }
 
 .footer__bottom {
-    position: absolute;
-    left: var(--section-padding);
-    right: var(--section-padding);
-    bottom: 13px;
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     gap: 19px;
+    margin-top: 18px;
     color: rgba(255, 255, 255, 0.4);
-    font-size: 19.91px;
+    font-size: clamp(12px, 1.04vw, 19.91px);
     line-height: 1;
 }
 
 .footer__bottom a,
 .footer__bottom span {
     font-family: "Bw Modelica Cyrillic DEMO";
-    font-size: 19.91px;
+    font-size: clamp(12px, 1.04vw, 19.91px);
     font-style: normal;
     font-weight: 500;
     line-height: 1;
@@ -923,6 +890,6 @@ textarea {
     text-decoration-thickness: 0%;
 }
 
-.footer__bottom span {
+.footer__bottom span:last-child {
     margin-left: auto;
 }
