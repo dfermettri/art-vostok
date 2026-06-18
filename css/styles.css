@@ -884,33 +884,16 @@ textarea {
     font-weight: 900;
 }
 
-.logo--footer {
+.footer__logo {
     align-self: start;
-    width: 94px;
+    width: clamp(94px, 7vw, 135px);
     margin-top: 0;
 }
 
-.logo--footer .logo__mark {
-    width: 33px;
-    height: 33px;
-}
-
-.logo--footer .logo__mark::before {
-    top: 9px;
-    left: 9px;
-    width: 13px;
-    height: 16px;
-}
-
-.logo--footer .logo__text {
-    font-size: 10px;
-    line-height: 1.45;
-}
-
-.logo--footer small {
-    font-size: 5px;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
+.footer__logo img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .footer__bottom {
