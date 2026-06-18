@@ -223,6 +223,7 @@ textarea {
     gap: clamp(24px, 2.4vw, 48px);
     min-height: clamp(52px, 4.6vw, 88px);
     padding: clamp(10px, 0.9vw, 18px) var(--section-padding);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 69.22%, rgba(0, 0, 0, 0) 100%);
     font-family: "Bw Modelica Cyrillic DEMO";
     font-size: 22.76px;
     font-style: normal;
@@ -287,7 +288,7 @@ textarea {
     justify-content: center;
     gap: clamp(18px, 1.45vw, 34px);
     flex: 1 1 auto;
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--white);
     font-family: inherit;
     font-size: inherit;
     font-style: inherit;
@@ -296,13 +297,16 @@ textarea {
     letter-spacing: inherit;
 }
 
-.nav a,
+.nav a {
+    color: var(--white);
+    transition: color 0.2s ease;
+}
+
 .header__socials a {
     opacity: 0.8;
     transition: opacity 0.2s ease;
 }
 
-.nav a:hover,
 .header__socials a:hover {
     opacity: 1;
 }
