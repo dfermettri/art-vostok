@@ -32,10 +32,6 @@
         grid-template-columns: 1fr;
     }
 
-    .clients__list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     .work__grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 150px;
@@ -98,10 +94,6 @@
 
     .about__lead {
         font-size: 18px;
-    }
-
-    .clients__list {
-        gap: 15px;
     }
 
     .work__grid {
