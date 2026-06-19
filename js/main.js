@@ -37,12 +37,14 @@ const clientsCarousel = document.querySelector(".clients__carousel");
 if (clientsCarousel) {
     const clientsList = clientsCarousel.querySelector(".clients__list");
     const clientsItems = [...clientsList.children];
+    const clientsCarouselSpeed = 80;
     let firstClone = null;
     let loopWidth = 0;
     let frameId = null;
     let isRunning = false;
     let lastFrameTime = 0;
     let scrollDirection = 1;
+    let scrollPosition = clientsCarousel.scrollLeft;
 
     clientsItems.forEach((item, index) => {
         const clone = item.cloneNode(true);
@@ -66,6 +68,7 @@ if (clientsCarousel) {
         }
 
         loopWidth = firstClone.offsetLeft - clientsList.firstElementChild.offsetLeft;
+        scrollPosition = clientsCarousel.scrollLeft;
     };
 
     const animateCarousel = (time) => {
@@ -83,22 +86,23 @@ if (clientsCarousel) {
 
         const secondsPassed = (time - lastFrameTime) / 1000;
 
-        clientsCarousel.scrollLeft += secondsPassed * 250 * scrollDirection;
+        scrollPosition += secondsPassed * clientsCarouselSpeed * scrollDirection;
         lastFrameTime = time;
 
-        if (loopWidth && scrollDirection > 0 && clientsCarousel.scrollLeft >= loopWidth) {
-            clientsCarousel.scrollLeft -= loopWidth;
+        if (loopWidth && scrollDirection > 0 && scrollPosition >= loopWidth) {
+            scrollPosition -= loopWidth;
         }
 
-        if (loopWidth && scrollDirection < 0 && clientsCarousel.scrollLeft <= 0) {
-            clientsCarousel.scrollLeft += loopWidth;
+        if (loopWidth && scrollDirection < 0 && scrollPosition <= 0) {
+            scrollPosition += loopWidth;
         }
 
+        clientsCarousel.scrollLeft = scrollPosition;
         frameId = requestAnimationFrame(animateCarousel);
     };
 
     const updateDirection = (event) => {
-        if (typeof event.clientX !== "number") {
+        if (!event || typeof event.clientX !== "number") {
             return;
         }
 
@@ -114,6 +118,7 @@ if (clientsCarousel) {
 
         isRunning = true;
         lastFrameTime = 0;
+        scrollPosition = clientsCarousel.scrollLeft;
         clientsCarousel.classList.add("is-running");
         frameId = requestAnimationFrame(animateCarousel);
     };
@@ -131,11 +136,25 @@ if (clientsCarousel) {
 
     updateLoopWidth();
     window.addEventListener("resize", updateLoopWidth);
-    clientsCarousel.addEventListener("mouseenter", startCarousel);
+    clientsCarousel.addEventListener("mouseenter", updateDirection);
     clientsCarousel.addEventListener("mousemove", updateDirection);
-    clientsCarousel.addEventListener("mouseleave", stopCarousel);
-    clientsCarousel.addEventListener("focusin", startCarousel);
-    clientsCarousel.addEventListener("focusout", stopCarousel);
+
+    if ("IntersectionObserver" in window) {
+        const clientsObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    startCarousel();
+                } else {
+                    stopCarousel();
+                }
+            },
+            { threshold: 0.25 },
+        );
+
+        clientsObserver.observe(clientsCarousel);
+    } else {
+        startCarousel();
+    }
 }
 
 document.querySelector(".contact__form")?.addEventListener("submit", (event) => {
