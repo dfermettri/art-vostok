@@ -196,13 +196,35 @@ textarea {
     gap: clamp(24px, 2.4vw, 48px);
     min-height: clamp(52px, 4.6vw, 88px);
     padding: clamp(10px, 0.9vw, 18px) var(--section-padding);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 69.22%, rgba(0, 0, 0, 0) 100%);
+    background: transparent;
     font-family: "Bw Modelica Cyrillic DEMO";
     font-size: 22.76px;
     font-style: normal;
     font-weight: 600;
     line-height: 1;
     letter-spacing: 0;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 0;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.5) 58%, rgba(0, 0, 0, 0) 100%);
+    opacity: 1;
+    pointer-events: none;
+    transition: height 0.28s ease, opacity 0.28s ease;
+}
+
+.header:has(.nav__item--portfolio:hover)::before,
+.header:has(.nav__item--portfolio:focus-within)::before {
+    height: 281px;
+}
+
+.header > * {
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -244,9 +266,76 @@ textarea {
     letter-spacing: inherit;
 }
 
+.nav__item {
+    position: relative;
+}
+
+.nav__item--portfolio::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 30px;
+}
+
 .nav a {
     color: var(--white);
     transition: color 0.2s ease;
+}
+
+.nav__link--dropdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav__link--dropdown::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+}
+
+.nav__dropdown {
+    position: absolute;
+    top: calc(100% + 30px);
+    left: 0;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: clamp(38px, 3.2vw, 62px);
+    row-gap: 20px;
+    min-width: 330px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.nav__dropdown a {
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+}
+
+.nav__dropdown a:hover,
+.nav__dropdown a:focus-visible,
+.nav__item--portfolio:hover > .nav__link,
+.nav__item--portfolio:focus-within > .nav__link {
+    color: var(--white);
+}
+
+.nav__item--portfolio:hover .nav__dropdown,
+.nav__item--portfolio:focus-within .nav__dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.header:has(.nav__item--portfolio:hover) .nav > a,
+.header:has(.nav__item--portfolio:focus-within) .nav > a {
+    color: rgba(255, 255, 255, 0.48);
 }
 
 .header__socials a,
@@ -275,8 +364,9 @@ textarea {
 .header__socials button {
     display: grid;
     place-items: center;
-    min-width: clamp(13px, 1vw, 20px);
-    height: clamp(13px, 1vw, 20px);
+    width: clamp(18px, 1.45vw, 28px);
+    min-width: clamp(18px, 1.45vw, 28px);
+    height: clamp(18px, 1.45vw, 28px);
     padding: 0;
     border: 0;
     background: transparent;
@@ -292,36 +382,191 @@ textarea {
 
 .header__socials img {
     display: block;
-    width: clamp(18px, 1.45vw, 28px);
-    height: clamp(18px, 1.45vw, 28px);
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
 .header__socials .header__lang {
     position: relative;
-    width: clamp(24px, 1.95vw, 38px);
-    height: clamp(24px, 1.95vw, 38px);
-    min-width: clamp(24px, 1.95vw, 38px);
-    padding-bottom: clamp(4px, 0.35vw, 7px);
-    border: 1px solid var(--white);
-    border-radius: 50%;
-    color: var(--white);
-    font-size: clamp(10px, 0.75vw, 15px);
-    font-weight: 500;
-    line-height: 1;
-    text-transform: none;
 }
 
-.header__lang::after {
+.lang-switcher {
+    --lang-size: 43px;
+    --lang-open-height: 129px;
+
+    align-self: center;
+    width: var(--lang-size);
+    height: var(--lang-size);
+    min-width: var(--lang-size);
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    color: var(--white);
+    font-family: "Bw Modelica Cyrillic DEMO";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.lang-switcher::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: var(--lang-size);
+    height: var(--lang-size);
+    border: 1px solid var(--white);
+    border-radius: 999px;
+    background: transparent;
+    transition: height 0.25s ease;
+}
+
+.lang-switcher:hover,
+.lang-switcher.is-open {
+    color: #0d0d0d;
+}
+
+.lang-switcher:hover::before,
+.lang-switcher.is-open::before {
+    border-color: var(--white);
+    background: var(--white);
+}
+
+.lang-switcher::after {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: clamp(5px, 0.35vw, 7px);
-    width: clamp(5px, 0.42vw, 8px);
-    height: clamp(5px, 0.42vw, 8px);
-    border-right: 1px solid currentColor;
-    border-bottom: 1px solid currentColor;
+    bottom: 7px;
+    z-index: 2;
+    width: 8px;
+    height: 8px;
+    border-right: 1.42px solid currentColor;
+    border-bottom: 1.42px solid currentColor;
+    opacity: 1;
     transform: translateX(-50%) rotate(45deg);
+    transition: top 0.25s ease, bottom 0.25s ease, transform 0.25s ease;
+}
+
+.lang-switcher.is-open::before {
+    height: var(--lang-open-height);
+}
+
+.lang-switcher.is-open::after {
+    top: 107px;
+    bottom: auto;
+    opacity: 0;
+    animation: lang-switcher-arrow-in 0.01s linear 0.15s forwards;
+    transform: translateX(-50%) rotate(-135deg);
+}
+
+@keyframes lang-switcher-arrow-in {
+    to {
+        opacity: 1;
+    }
+}
+
+.lang-switcher__btn {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 18px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.header__socials .lang-switcher__btn {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+}
+
+.lang-switcher__btn span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.lang-switcher__list {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, margin 0.25s ease;
+}
+
+.lang-switcher.is-open .lang-switcher__list {
+    max-height: 60px;
+    margin-top: 0;
+}
+
+.lang-switcher__list li {
+    display: contents;
+}
+
+.lang-switcher__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-align: center;
+}
+
+.header__socials .lang-switcher__option {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 30px;
+}
+
+.lang-switcher__option:hover,
+.lang-switcher__option:focus-visible {
+    color: inherit;
+}
+
+.lang-switcher__option.is-current {
+    display: flex;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.lang-switcher:hover .lang-switcher__option.is-current,
+.lang-switcher.is-open .lang-switcher__option.is-current {
+    color: rgba(0, 0, 0, 0.28);
 }
 
 .hero {

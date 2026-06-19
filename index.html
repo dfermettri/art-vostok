@@ -17,7 +17,18 @@
 
                 <nav class="nav" aria-label="Main navigation">
                     <a href="#home">Home</a>
-                    <a href="#portfolio">Portfolio</a>
+                    <div class="nav__item nav__item--portfolio">
+                        <a class="nav__link nav__link--dropdown" href="#portfolio">Portfolio</a>
+                        <div class="nav__dropdown" aria-label="Portfolio categories">
+                            <a href="#projects">Concept art</a>
+                            <a href="#projects">Environment \ props</a>
+                            <a href="#projects">Weapons</a>
+                            <a href="#projects">Sci-fi</a>
+                            <a href="#projects">Vehicles</a>
+                            <a href="#projects">Casual \ Stylized Art</a>
+                            <a href="#projects">Characters</a>
+                        </div>
+                    </div>
                     <a href="#projects">Projects</a>
                     <a href="#about">About us</a>
                     <a href="#contacts">Contacts</a>
@@ -35,9 +46,19 @@
                     <a href="#" aria-label="ArtStation">
                         <img src="img/logo/artstation-transparent-logo.svg" alt="">
                     </a>
-                    <a class="header__lang" href="#" aria-label="English">
-                        <span>En</span>
-                    </a>
+                    <div class="lang-switcher header__lang" data-lang-switcher>
+                        <button class="lang-switcher__btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+                            <span data-lang-current>En</span>
+                        </button>
+                        <ul class="lang-switcher__list" role="listbox" aria-label="Languages">
+                            <li>
+                                <button class="lang-switcher__option is-current" type="button" role="option" aria-selected="true" data-lang="En">En</button>
+                            </li>
+                            <li>
+                                <button class="lang-switcher__option" type="button" role="option" aria-selected="false" data-lang="Ch">Ch</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </header>
 

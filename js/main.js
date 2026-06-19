@@ -141,3 +141,71 @@ if (clientsCarousel) {
 document.querySelector(".contact__form")?.addEventListener("submit", (event) => {
     event.preventDefault();
 });
+
+const langSwitcher = document.querySelector("[data-lang-switcher]");
+
+if (langSwitcher) {
+    const trigger = langSwitcher.querySelector(".lang-switcher__btn");
+    const currentLabel = langSwitcher.querySelector("[data-lang-current]");
+    const options = [...langSwitcher.querySelectorAll(".lang-switcher__option")];
+
+    const open = () => {
+        langSwitcher.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+    };
+
+    const close = () => {
+        langSwitcher.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+    };
+
+    const toggle = () => {
+        if (langSwitcher.classList.contains("is-open")) {
+            close();
+        } else {
+            open();
+        }
+    };
+
+    langSwitcher.addEventListener("click", (event) => {
+        if (event.target.closest(".lang-switcher__option")) {
+            return;
+        }
+
+        toggle();
+    });
+
+    options.forEach((option) => {
+        option.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            const selectedLang = option.dataset.lang;
+
+            options.forEach((item) => {
+                const isCurrent = item.dataset.lang === selectedLang;
+
+                item.classList.toggle("is-current", isCurrent);
+                item.setAttribute("aria-selected", String(isCurrent));
+            });
+
+            if (currentLabel) {
+                currentLabel.textContent = selectedLang;
+            }
+
+            close();
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        if (langSwitcher.classList.contains("is-open") && !langSwitcher.contains(event.target)) {
+            close();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && langSwitcher.classList.contains("is-open")) {
+            close();
+            trigger.focus();
+        }
+    });
+}
