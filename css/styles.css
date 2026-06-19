@@ -144,13 +144,14 @@ textarea {
 }
 
 .button {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: clamp(14px, 1vw, 24px);
     min-width: clamp(134px, 8.5vw, 184px);
     height: clamp(32px, 2.35vw, 46px);
-    padding: 0 clamp(7px, 0.55vw, 11px) 0 clamp(20px, 1.55vw, 30px);
+    padding: 0 clamp(45px, 3.6vw, 72px) 0 clamp(20px, 1.55vw, 30px);
     border: 1px solid currentColor;
     border-radius: 999px;
     color: var(--white);
@@ -160,15 +161,18 @@ textarea {
     font-weight: 500;
     line-height: 1;
     letter-spacing: 0;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease, padding 0.35s ease;
 }
 
 .button__arrow {
+    position: absolute;
+    right: clamp(7px, 0.55vw, 11px);
     width: clamp(24px, 1.9vw, 40px);
     height: clamp(24px, 1.9vw, 40px);
     flex: 0 0 clamp(24px, 1.9vw, 40px);
     border-radius: 50%;
     object-fit: contain;
+    transition: right 0.35s ease, filter 0.25s ease;
 }
 
 .button:hover {
@@ -183,6 +187,19 @@ textarea {
 .button--dark {
     border-color: rgba(255, 255, 255, 0.65);
     background: rgba(4, 10, 15, 0.38);
+}
+
+.button--dark:hover {
+    padding-right: clamp(20px, 1.55vw, 30px);
+    padding-left: clamp(45px, 3.6vw, 72px);
+    border-color: var(--white);
+    background: var(--white);
+    color: var(--bg);
+}
+
+.button--dark:hover .button__arrow {
+    right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
+    filter: invert(1);
 }
 
 .header {
@@ -205,21 +222,30 @@ textarea {
     letter-spacing: 0;
 }
 
-.header::before {
+.header::before,
+.header::after {
     content: "";
     position: absolute;
     inset: 0 0 auto;
     z-index: 0;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.5) 58%, rgba(0, 0, 0, 0) 100%);
-    opacity: 1;
     pointer-events: none;
+}
+
+.header::before {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 69.22%, rgba(0, 0, 0, 0) 100%);
+}
+
+.header::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.82) 64%, rgba(0, 0, 0, 0.58) 80%, rgba(0, 0, 0, 0.24) 94%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
     transition: height 0.28s ease, opacity 0.28s ease;
 }
 
-.header:has(.nav__item--portfolio:hover)::before,
-.header:has(.nav__item--portfolio:focus-within)::before {
-    height: 281px;
+.header:has(.nav__item--portfolio:hover)::after,
+.header:has(.nav__item--portfolio:focus-within)::after {
+    height: 320px;
+    opacity: 1;
 }
 
 .header > * {
@@ -284,6 +310,18 @@ textarea {
     transition: color 0.2s ease;
 }
 
+.nav:hover > a,
+.nav:hover > .nav__item > .nav__link {
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.nav > a:hover,
+.nav > a:focus-visible,
+.nav > .nav__item:hover > .nav__link,
+.nav > .nav__item:focus-within > .nav__link {
+    color: var(--white);
+}
+
 .nav__link--dropdown {
     display: inline-flex;
     align-items: center;
@@ -297,6 +335,12 @@ textarea {
     border-right: 1px solid currentColor;
     border-bottom: 1px solid currentColor;
     transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.nav__item--portfolio:hover > .nav__link--dropdown::after,
+.nav__item--portfolio:focus-within > .nav__link--dropdown::after {
+    transform: translateY(1px) rotate(-135deg);
 }
 
 .nav__dropdown {
@@ -331,11 +375,6 @@ textarea {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
-}
-
-.header:has(.nav__item--portfolio:hover) .nav > a,
-.header:has(.nav__item--portfolio:focus-within) .nav > a {
-    color: rgba(255, 255, 255, 0.48);
 }
 
 .header__socials a,
