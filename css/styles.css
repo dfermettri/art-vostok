@@ -1308,6 +1308,9 @@ textarea {
     font-weight: 500;
     line-height: 1;
     letter-spacing: 0;
+}
+
+.footer__bottom a {
     text-decoration: underline;
     text-decoration-style: solid;
     text-decoration-offset: 0%;
