@@ -157,9 +157,23 @@ if (clientsCarousel) {
     }
 }
 
-document.querySelector(".contact__form")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-});
+const contactForm = document.querySelector(".contact__form");
+
+if (contactForm) {
+    const contactFields = contactForm.querySelectorAll('input[type="text"], input[type="email"], textarea');
+    const toggleFieldLabel = (field) => {
+        field.closest("label")?.classList.toggle("is-filled", Boolean(field.value.trim()));
+    };
+
+    contactFields.forEach((field) => {
+        toggleFieldLabel(field);
+        field.addEventListener("input", () => toggleFieldLabel(field));
+    });
+
+    contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+    });
+}
 
 const langSwitcher = document.querySelector("[data-lang-switcher]");
 
