@@ -32,6 +32,19 @@
 }
 
 @font-face {
+    font-family: "Bw Modelica Cyrillic DEMO Light";
+    src:
+        local("Bw Modelica Cyrillic DEMO Light"),
+        local("BwModelicaCyrillicDEMO-Light"),
+        url("../fonts/BwModelicaCyrillicDEMO-Light.woff2") format("woff2"),
+        url("../fonts/BwModelicaCyrillicDEMO-Light.woff") format("woff"),
+        url("../fonts/BwModelicaCyrillicDEMO-Light.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
     font-family: "Bw Modelica Cyrillic DEMO";
     src:
         local("Bw Modelica Cyrillic DEMO Medium"),
@@ -995,6 +1008,9 @@ textarea {
     width: 100%;
     max-width: none;
     margin: 0;
+    font-family: "Bw Modelica Cyrillic DEMO Light";
+    font-size: 22.76px;
+    line-height: 1.4;
 }
 
 .contact__row {
@@ -1005,15 +1021,48 @@ textarea {
 }
 
 .contact label {
+    position: relative;
     display: block;
 }
 
-.contact label > span {
+.contact label:not(.contact__policy) {
+    --contact-label-gap: 9px;
+    --contact-label-size: 0.72em;
+    --contact-field-height: 85.3px;
+    --contact-field-line: 1.4em;
+    --contact-label-line: var(--contact-label-size);
+    --contact-label-top: calc((var(--contact-field-height) - var(--contact-field-line) - var(--contact-label-line) - var(--contact-label-gap)) / 2);
+    --contact-field-filled-padding-top: calc(var(--contact-label-top) + var(--contact-label-line) + var(--contact-label-gap));
+}
+
+.contact label:not(.contact__policy) > span {
     position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
+    top: 50%;
+    left: clamp(20px, 2vw, 36px);
+    z-index: 1;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 1em;
+    line-height: 1.4;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: top 0.2s ease, color 0.2s ease, font-size 0.2s ease, line-height 0.2s ease, transform 0.2s ease;
+}
+
+.contact label:not(.contact__policy):has(textarea) > span {
+    top: clamp(18px, 1.8vw, 34px);
+    transform: none;
+}
+
+.contact label:not(.contact__policy):focus-within > span,
+.contact label:not(.contact__policy).is-filled > span {
+    top: var(--contact-label-top);
+    font-size: var(--contact-label-size);
+    line-height: 1;
+    transform: none;
 }
 
 .contact input[type="text"],
@@ -1021,22 +1070,29 @@ textarea {
 .contact textarea {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.34);
-    border-radius: clamp(9px, 0.75vw, 16px);
+    border-radius: 28.44px;
     outline: 2px solid transparent;
     outline-offset: 2px;
-    background: rgba(255, 255, 255, 0.13);
+    background: #ffffff1a;
     -webkit-backdrop-filter: blur(55.4666633605957px);
     backdrop-filter: blur(55.4666633605957px);
     color: var(--white);
-    font-family: "Bw Modelica Cyrillic DEMO";
-    font-size: clamp(13px, 1.1vw, 18px);
-    transition: border-color 0.2s ease, background 0.2s ease;
+    font: inherit;
+    transition: border-color 0.2s ease, background 0.2s ease, padding 0.2s ease;
 }
 
 .contact input[type="text"],
 .contact input[type="email"] {
-    height: clamp(44px, 4.5vw, 70px);
+    height: var(--contact-field-height);
     padding: 0 clamp(20px, 2vw, 36px);
+}
+
+.contact label:not(.contact__policy):focus-within input[type="text"],
+.contact label:not(.contact__policy):focus-within input[type="email"],
+.contact label:not(.contact__policy).is-filled input[type="text"],
+.contact label:not(.contact__policy).is-filled input[type="email"] {
+    padding-top: var(--contact-field-filled-padding-top);
+    padding-bottom: var(--contact-label-top);
 }
 
 .contact textarea {
@@ -1045,16 +1101,22 @@ textarea {
     resize: vertical;
 }
 
-.contact input::placeholder,
-.contact textarea::placeholder {
-    color: rgba(255, 255, 255, 0.52);
+.contact label:not(.contact__policy):focus-within textarea,
+.contact label:not(.contact__policy).is-filled textarea {
+    padding-top: var(--contact-field-filled-padding-top);
+}
+
+.contact input[type="text"]:hover,
+.contact input[type="email"]:hover,
+.contact textarea:hover {
+    background: #ffffff33;
 }
 
 .contact input:focus,
 .contact textarea:focus {
-    border-color: rgba(255, 255, 255, 0.75);
-    outline-color: rgba(255, 255, 255, 0.75);
-    background: rgba(255, 255, 255, 0.17);
+    border-color: rgba(255, 255, 255, 0.34);
+    outline-color: transparent;
+    background: #ffffff33;
 }
 
 .contact .contact__policy {
