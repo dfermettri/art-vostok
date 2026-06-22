@@ -184,6 +184,11 @@ textarea {
     background: var(--red);
 }
 
+.button--dark,
+.button--red {
+    height: 76.8px;
+}
+
 .button--dark {
     border-color: rgba(255, 255, 255, 0.65);
     background: rgba(4, 10, 15, 0.38);
@@ -200,6 +205,17 @@ textarea {
 .button--dark:hover .button__arrow {
     right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
     filter: invert(1);
+}
+
+.button--red:hover {
+    padding-right: clamp(20px, 1.55vw, 30px);
+    padding-left: clamp(45px, 3.6vw, 72px);
+    border: 1px solid var(--white);
+    background: transparent;
+}
+
+.button--red:hover .button__arrow {
+    right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
 }
 
 .header {
@@ -639,6 +655,14 @@ textarea {
     background: url("../img/hero-warcraft.png") center / cover no-repeat;
 }
 
+.hero__button {
+    position: absolute;
+    left: 114px;
+    bottom: 70px;
+    z-index: 3;
+    width: 285px;
+}
+
 .hero__controls {
     position: absolute;
     right: var(--section-padding);
@@ -1071,9 +1095,7 @@ textarea {
     display: flex;
     width: fit-content;
     min-width: clamp(180px, 18vw, 260px);
-    height: clamp(42px, 4vw, 62px);
     margin: 0 auto;
-    border: 0;
     cursor: pointer;
 }
 
