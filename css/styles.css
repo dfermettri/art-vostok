@@ -1127,7 +1127,7 @@ textarea {
     width: fit-content;
     margin: clamp(18px, 1.8vw, 34px) auto clamp(12px, 1.2vw, 24px);
     color: rgba(255, 255, 255, 0.78);
-    font-size: clamp(12px, 1vw, 16px);
+    font: inherit;
 }
 
 .contact .contact__policy span {
@@ -1147,10 +1147,24 @@ textarea {
 }
 
 .contact__policy input {
-    width: clamp(10px, 0.75vw, 15px);
-    height: clamp(10px, 0.75vw, 15px);
+    box-sizing: border-box;
+    flex: 0 0 15.64px;
+    width: 15.64px;
+    height: 15.64px;
     margin: 0;
-    accent-color: var(--red);
+    border: 1.42222px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    appearance: none;
+    cursor: pointer;
+}
+
+.contact__policy input:checked {
+    background: url("../img/chex-box.svg") 50% 48% / 9.96px 7.11px no-repeat;
+}
+
+.contact__policy input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
 }
 
 .contact .button {
