@@ -15,11 +15,11 @@
                     <img src="img/logo/artvostok-header-logo.svg" alt="ARTVOSTOK">
                 </a>
 
-                <nav class="nav" aria-label="Main navigation">
+                <nav class="nav" id="main-navigation" aria-label="Main navigation">
                     <a href="#home">Home</a>
                     <div class="nav__item nav__item--portfolio">
-                        <a class="nav__link nav__link--dropdown" href="#portfolio">Portfolio</a>
-                        <div class="nav__dropdown" aria-label="Portfolio categories">
+                        <a class="nav__link nav__link--dropdown" href="#portfolio" aria-controls="portfolio-dropdown" aria-expanded="false">Portfolio</a>
+                        <div class="nav__dropdown" id="portfolio-dropdown" aria-label="Portfolio categories">
                             <a href="#projects">Concept art</a>
                             <a href="#projects">Environment \ props</a>
                             <a href="#projects">Weapons</a>
@@ -60,6 +60,12 @@
                         </ul>
                     </div>
                 </div>
+
+                <button class="header__menu" type="button" aria-label="Open menu" aria-controls="main-navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </header>
 
             <div class="hero__slide hero__slide--atomic is-active" aria-hidden="false"></div>
