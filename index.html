@@ -188,25 +188,25 @@
                 <div class="contact__row">
                     <label>
                         <span>First name</span>
-                        <input type="text" name="name">
+                        <input type="text" name="name" required>
                     </label>
                     <label>
                         <span>E-mail</span>
-                        <input type="email" name="email">
+                        <input type="email" name="email" required>
                     </label>
                 </div>
 
                 <label>
                     <span>Message</span>
-                    <textarea name="message"></textarea>
+                    <textarea name="message" required></textarea>
                 </label>
 
                 <label class="contact__policy">
-                    <input type="checkbox" name="policy">
+                    <input type="checkbox" name="policy" required>
                     <span>I agree with the <a class="contact__policy-link" href="#" target="_blank" rel="noopener noreferrer">Privacy and Data Processing Policy</a></span>
                 </label>
 
-                <button class="button button--red" type="submit">
+                <button class="button button--red" type="submit" disabled>
                     Send message
                     <img class="button__arrow" src="img/arrow.svg" alt="">
                 </button>

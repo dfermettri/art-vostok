@@ -188,10 +188,6 @@ textarea {
     transition: right 0.35s ease, filter 0.25s ease;
 }
 
-.button:hover {
-    transform: translateY(-1px);
-}
-
 .button--red {
     border-color: var(--red);
     background: var(--red);
@@ -207,28 +203,40 @@ textarea {
     background: rgba(4, 10, 15, 0.38);
 }
 
-.button--dark:hover {
-    padding-right: clamp(20px, 1.55vw, 30px);
-    padding-left: clamp(45px, 3.6vw, 72px);
-    border-color: var(--white);
-    background: var(--white);
-    color: var(--bg);
+.button--red:disabled,
+.button--red.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
 }
 
-.button--dark:hover .button__arrow {
-    right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
-    filter: invert(1);
-}
+@media (hover: hover) and (pointer: fine) {
+    .button:not(:disabled):hover {
+        transform: translateY(-1px);
+    }
 
-.button--red:hover {
-    padding-right: clamp(20px, 1.55vw, 30px);
-    padding-left: clamp(45px, 3.6vw, 72px);
-    border: 1px solid var(--white);
-    background: transparent;
-}
+    .button--dark:hover {
+        padding-right: clamp(20px, 1.55vw, 30px);
+        padding-left: clamp(45px, 3.6vw, 72px);
+        border-color: var(--white);
+        background: var(--white);
+        color: var(--bg);
+    }
 
-.button--red:hover .button__arrow {
-    right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
+    .button--dark:hover .button__arrow {
+        right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
+        filter: invert(1);
+    }
+
+    .button--red:not(:disabled):hover {
+        padding-right: clamp(20px, 1.55vw, 30px);
+        padding-left: clamp(45px, 3.6vw, 72px);
+        border: 1px solid var(--white);
+        background: transparent;
+    }
+
+    .button--red:not(:disabled):hover .button__arrow {
+        right: calc(100% - clamp(24px, 1.9vw, 40px) - clamp(7px, 0.55vw, 11px));
+    }
 }
 
 .header {

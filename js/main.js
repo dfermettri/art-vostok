@@ -161,14 +161,27 @@ const contactForm = document.querySelector(".contact__form");
 
 if (contactForm) {
     const contactFields = contactForm.querySelectorAll('input[type="text"], input[type="email"], textarea');
+    const policyCheckbox = contactForm.querySelector('input[name="policy"]');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
     const toggleFieldLabel = (field) => {
         field.closest("label")?.classList.toggle("is-filled", Boolean(field.value.trim()));
+    };
+
+    const updateSubmitState = () => {
+        const isPolicyChecked = Boolean(policyCheckbox?.checked);
+
+        if (submitButton) {
+            submitButton.disabled = !isPolicyChecked;
+        }
     };
 
     contactFields.forEach((field) => {
         toggleFieldLabel(field);
         field.addEventListener("input", () => toggleFieldLabel(field));
     });
+
+    policyCheckbox?.addEventListener("change", updateSubmitState);
+    updateSubmitState();
 
     contactForm.addEventListener("submit", (event) => {
         event.preventDefault();
