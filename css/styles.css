@@ -733,10 +733,12 @@ textarea {
     position: absolute;
     z-index: 0;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-    text-stroke: 1px rgba(255, 255, 255, 0.1);
+    opacity: 0.3;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.42222px var(--white);
+    text-stroke: 1.42222px var(--white);
     font-family: "Code Pro LC";
-    font-size: clamp(54px, 15.55vw, 298.67px);
+    font-size: clamp(58px, 26.13vw, 352.711px);
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -747,19 +749,27 @@ textarea {
 }
 
 .about {
-    padding-top: clamp(78px, 6.5vw, 128px);
+    padding-top: 195px;
     padding-bottom: clamp(55px, 5vw, 96px);
 }
 
+.about__heading {
+    position: relative;
+    z-index: 1;
+    margin-bottom: clamp(30px, 2.6vw, 52px);
+}
+
 .about .section-outline {
-    top: 61px;
-    left: -23px;
+    top: -100px;
+    left: 50%;
+    width: max-content;
+    transform: translateX(-50%);
 }
 
 .about h2 {
     position: relative;
     z-index: 1;
-    margin: 0 0 clamp(30px, 2.6vw, 52px);
+    margin: 0;
     padding-left: 0;
     font-family: "Code Pro LC";
     font-size: clamp(54px, 15.55vw, 298.67px);
@@ -783,14 +793,14 @@ textarea {
     font-family: "Bw Modelica Cyrillic DEMO";
     font-size: clamp(22px, 2.67vw, 51.2px);
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0;
     text-transform: uppercase;
 }
 
 .about__text {
-    color: var(--muted);
+    color: var(--white);
     font-family: "Bw Modelica Cyrillic DEMO";
     font-size: clamp(16px, 1.78vw, 34.13px);
     font-style: normal;
@@ -816,9 +826,14 @@ textarea {
 .clients .section-outline {
     position: relative;
     top: auto;
-    left: auto;
+    left: 50%;
     display: block;
     z-index: 1;
+    width: max-content;
+    max-width: none;
+    transform: translateX(-50%);
+    font-size: clamp(54px, 11.8vw, 227.56px);
+    text-align: center;
 }
 
 .clients__carousel {
@@ -980,8 +995,6 @@ textarea {
     font-size: clamp(104px, 13vw, 230px);
     letter-spacing: 0;
     text-align: center;
-    -webkit-text-stroke-color: rgba(255, 255, 255, 0.13);
-    text-stroke-color: rgba(255, 255, 255, 0.13);
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
 }
