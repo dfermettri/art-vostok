@@ -220,6 +220,22 @@
         margin-left: auto;
     }
 
+    .header.is-menu-open .lang-switcher::before {
+        top: auto;
+        bottom: 0;
+    }
+
+    .header.is-menu-open .lang-switcher__list {
+        top: auto;
+        bottom: 40px;
+    }
+
+    .header.is-menu-open .lang-switcher.is-open::after {
+        top: -80px;
+        bottom: auto;
+        transform: translateX(-50%) rotate(45deg);
+    }
+
     .hero {
         height: 348px;
         aspect-ratio: auto;

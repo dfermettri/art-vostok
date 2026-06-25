@@ -524,7 +524,7 @@ textarea {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 7px;
+    bottom: 10px;
     z-index: 2;
     width: 8px;
     height: 8px;
